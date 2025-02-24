@@ -5,7 +5,7 @@ print("Los módulos en Python son archivos que contienen definiciones y declarac
 import Probando_los_modulos
 
 Probando_los_modulos.suma(4,5)
-Probando_los_modulos.my_function
+Probando_los_modulos.my_function()
              
 from Probando_los_modulos import suma
 suma(2, 7)           

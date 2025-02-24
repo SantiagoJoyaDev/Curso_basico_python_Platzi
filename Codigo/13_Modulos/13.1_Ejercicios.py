@@ -2,28 +2,49 @@ print("----------EJERCICIOS DE MODELOS----------")
 print("----------EJERCICIOS FACIL----------")
 print("Ejercicio 1: Usa el módulo math para calcular la raíz cuadrada de un número ingresado por el usuario.")
 import math
+from platform import node
 numero = int(input("Ingrese un numero "))
 operacion = math.sqrt(numero)
 print("La raiz cuadrada del numero ingresado es:",operacion)
     
 print("----------FIN----------")
 
-print("Ejercicio 2: Crea un módulo llamado operaciones.py con una función multiplicar(a, b). Luego, importa este módulo y usa la función en otro archivo.")
+print("Ejercicio 2: Crea un módulo llamado operaciones.py con una función multiplicar(num1, num2). Luego," 
+      "importa este módulo y usa la función en otro archivo.")
+from Probando_los_modulos import conversiones_de_grados, multiplicacion
+multiplicacion(2,4)
 
 print("----------FIN----------")
 
-print("Ejercicio 3: Crea un módulo llamado operaciones.py con una función multiplicar(a, b). Luego, importa este módulo y usa la función en otro archivo.")
+print("Ejercicio 3: Crea un módulo llamado conversiones.py con una función convertir_a_mayusculas(texto) que" 
+      "devuelva el texto en mayúsculas. Luego, importa este módulo en otro archivo y utiliza la función para" 
+      "convertir un mensaje ingresado por el usuario a mayúsculas.")
+import Probando_los_modulos
+
+Probando_los_modulos.mayusculas()
 
 print("----------FIN----------\n")
 
 print("----------EJERCICIOS INTERMEDIO----------")
 
-print("Ejercicio 4: Crea un módulo conversiones.py con funciones para convertir de Celsius a Fahrenheit y viceversa. Luego, importa solo la" 
+print("Ejercicio 4: Crea un módulo conversiones.py con funciones para convertir de Celsius a Fahrenheit y viceversa. Luego," 
+      "importa solo la" 
       "función que convierte a Fahrenheit y úsala.")
+import Probando_los_modulos
+resultado = Probando_los_modulos.conversiones_de_grados(fahrenheit=node,celsius=node)
+print(resultado)
+
 
 print("----------FIN----------")
 
 print("Ejercicio 5: Usa el módulo datetime para imprimir la fecha y hora actuales en el formato 'Día-Mes-Año Hora:Minuto:Segundo'.")
+import datetime
+fecha_actual = datetime.datetime.now()#Aqui primero importamos la funcionalidad de datetime luego llamamos el metodo
+#datetime para utilizar las fechas y horas(el formato) luego llamamos el metodo now para de igual forma trabajar
+#con fecha y hora actual
+formato = fecha_actual.strftime("%H:%M:%S %d-%m-%y")#aqui despues de que ya llamamos el formato de fecha y hora luego 
+#utilizamos el metodo strftime el cual me permite definir que quiero mostrar en fecha y hora
+print("La hora y feca actual es: ", formato)
 
 print("----------FIN----------")
 
@@ -39,7 +60,7 @@ print("Ejercicio 7: Crea una carpeta llamada utilidades/ con dos módulos:"
 
 print("----------FIN----------")
 
-print("Ejercicio 8: Usa el módulo requests para obtener los datos de una API pública como https://jsonplaceholder.typicode.com/todos/1 e imprime la información obtenida.")
+print("Ejercicio 8: Usa el módulo datetime para obtener la fecha y hora actual e imprímela en pantalla.")
 
 print("----------FIN----------")
 
