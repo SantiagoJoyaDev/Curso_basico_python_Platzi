@@ -33,3 +33,9 @@ def conversiones_de_grados(fahrenheit,celsius):
         
     else:
         print("La opcion seleccionada es incorrecta.")
+        
+def contar_palabras ():
+    texto = input("Ingrese el texto que quiere contar las palabras: ")
+    palabras = texto.split()#el metodo split funciona para dividir una cadena delimitada en subcadenas 
+    contador_de_palabras = len(palabras)
+    print("Las palabras segun el texto", texto ," son: ",contador_de_palabras)
