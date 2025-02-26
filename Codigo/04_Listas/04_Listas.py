@@ -1,6 +1,7 @@
 print("----------LISTAS----------")
 
-#La diferencia entres las tlistas y las tuplas es que las tuplas no se pueden modificar y las listas si. Ademas de que las tuplas se declaran con parentesis y las listas con corchetes
+#La diferencia entres las listas y las tuplas es que las tuplas no se pueden modificar y las listas si. 
+# Ademas de que las tuplas se declaran con parentesis y las listas con corchetes
 my_lista = list()
 my_other_lista = []#Se declaran con corchetes
 
@@ -16,7 +17,8 @@ print(my_lista[5])
 print(my_lista[6])
 print(my_lista)
 print(type(my_lista))#Para saber que tipo de dato es (Lista)
-print(len(my_lista))
+print(len(my_lista))#Para saber cuantos elementos tiene mi lista
+print(my_lista[0:5])#Nos devuelve exactamente estos dos valores que queremos
 
 my_other_lista = [22,1.82,"Santiago","Joya","joya",22]
 print(my_other_lista[0])
@@ -51,6 +53,10 @@ print("----------FUNCIONES DE LISTAS----------")
 lista_1 = [1,2,3,4,5,5,5,5,5]
 print("-----COUNT-----")#Sirve para contar cuantos elementos repetidos del mismo caracter hay
 print("Cuantos numero 5 hay repetidos:",lista_1.count(5) , "funcion de COUNT implementado\n")
+
+print("-----MAYO O MENOR-----")#Sirve para limpiar la lista completa
+print("EL numero mayor de toda la lista es: ",max(lista_1))
+print("EL numero menor  de toda la lista es: ",min(lista_1))
 
 print("-----APPEND-----")#Sirve para agregar un caracter nuevo a la lista al final de la lista
 print("Aqui esta la respuesta con la funcion de APPEND imiplementado...",lista_1)
@@ -87,3 +93,25 @@ print("Aqui esta la respuesta con la funcion de COPY implementada", my_nueva_lis
 print("-----CLEAR-----")#Sirve para limpiar la lista completa
 lista_1.clear()
 print("Aqui esta la respueta con la fucion de CLEAR implementada",lista_1,"\n")
+
+print("----------LISTAS DE LISTAS (MATRICES)----------")
+#Basicamente seria una matriz pero en realidad tiene las mismas propiedades que una lista puedo añadir o modificar elemento
+#lo que quiere decir que son datos mutables
+matrix = [[1,2,3],
+          [4,5,6],
+          [7,8,9]]
+print(matrix)
+print(len(matrix))
+print(type(matrix))
+#Ahora vamos a acceder a todos los elementos de la matriz
+print(matrix[0][0])
+print(matrix[0][1])
+print(matrix[0][2])
+#------------------
+print(matrix[1][0])
+print(matrix[1][1])
+print(matrix[1][2])
+#------------------
+print(matrix[2][0])
+print(matrix[2][1])
+print(matrix[2][2])

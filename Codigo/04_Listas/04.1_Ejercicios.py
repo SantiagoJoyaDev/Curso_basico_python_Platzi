@@ -60,15 +60,34 @@ numeros = list(range(1,21))#de esta manera utilizo una forma diferente de crear 
 print("Impresion sin el remove", numeros)
 #La siguiente linea elimina todos los numeros pares de la lista
 numeros = list(filter(lambda x: x % 2 != 0, numeros))#de igual manera utilizo la forma especifica de crear la lista
-#la funcion filter se utiliza para
-#lam
+#La función filter() en Python se utiliza para filtrar elementos de un iterable (como una lista o una tupla) 
+#según una condición especificada en una función.
+#La función lambda es una forma de definir funciones anónimas en una sola línea, lo que es útil cuando se usa con filter().
 print("Lista sin números pares:", numeros)
 print("-----FIN-----\n")
 
 print("Ejercicio 9: Crea una lista de números del 1 al 10." 
       "Escribe un programa que divida esta lista en dos sublistas: una con los números pares y otra con los números impares.")
+
+numeros = list(range(1, 11))
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+impares = list(filter(lambda x: x % 2 != 0, numeros))
+
+# Mostrar resultados
+print("Números pares:", pares)
+print("Números impares:", impares)
 print("-----FIN-----\n")
 
 print("Ejercicio 10: Dada una lista con las edades de un grupo de personas, escribe un programa que:"
-      "Encuentre la edad máxima y mínima usando las funciones max y min.Calcule el promedio de las edades.Ordene la lista en orden ascendente.")
+      "Encuentre la edad máxima y mínima usando las funciones max y min.Calcule el promedio de las edades."
+      "Ordene la lista en orden ascendente.")
+edades = [12,34,65,76,53,49,23]
+promedio = sum(edades) / len(edades)
+
+print("la edad maxina es:",max(edades))
+print("la edad minima es:",min(edades))
+print("El promedio de las edades es",promedio)
+edades.sort()
+print("El orden de la lista de forma ascendente es",edades)
+
 print("-----FIN-----\n")
