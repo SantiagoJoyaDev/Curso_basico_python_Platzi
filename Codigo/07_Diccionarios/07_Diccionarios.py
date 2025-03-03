@@ -44,9 +44,9 @@ my_favorite_programming_languages_dict = {1:"Python",
 print(my_favorite_programming_languages_dict)
 my_favorite_programming_languages_dict[7] = "PHP"# Agregar un nuevo elemento al diccionario
 print(my_favorite_programming_languages_dict)
-my_favorite_programming_languages_dict[8] = "Go"# Modificar un elemento del diccionario
+my_favorite_programming_languages_dict[8] = "Go"
 print(my_favorite_programming_languages_dict)
-my_favorite_programming_languages_dict[8] = "PHP"
+my_favorite_programming_languages_dict[8] = "PHP"# Modificar un elemento del diccionario
 print(my_favorite_programming_languages_dict)
 my_favorite_programming_languages_dict.pop(8)# Eliminar un elemento del diccionario
 print(my_favorite_programming_languages_dict)

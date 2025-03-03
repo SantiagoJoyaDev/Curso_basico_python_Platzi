@@ -1,6 +1,7 @@
 print("----------TUPLAS----------")
 
-#La diferencia entres las tuplas y las listas es que las tuplas no se pueden modificar y las listas si. Ademas de que las tuplas se declaran con parentesis y las listas con corchetes
+#La diferencia entres las tuplas y las listas es que las tuplas no se pueden modificar y las listas si. 
+# Ademas de que las tuplas se declaran con parentesis y las listas con corchetes
 my_tuple = tuple()
 my_other_tuple = (12,3123,12312,3)#Se declaran con parentesis
 

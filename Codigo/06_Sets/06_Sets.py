@@ -9,7 +9,7 @@ print(type(my_other_set))
 print(len(my_other_set))
 #print(my_other_set[0])#No se puede acceder a los elementos de un set por indice
 my_other_set.add("Python")#Se agrega un elemento al set
-print(my_other_set)#Un no es una estructura ordenada
+print(my_other_set)#Un set no es una estructura ordenada
 print(len(my_other_set))
 
 print("----------OPERACIONES CON SETS----------")

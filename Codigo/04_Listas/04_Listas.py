@@ -1,4 +1,6 @@
+import numpy as np # pylint: disable=import-error
 print("----------LISTAS----------")
+
 
 #La diferencia entres las listas y las tuplas es que las tuplas no se pueden modificar y las listas si. 
 # Ademas de que las tuplas se declaran con parentesis y las listas con corchetes
@@ -115,3 +117,58 @@ print(matrix[1][2])
 print(matrix[2][0])
 print(matrix[2][1])
 print(matrix[2][2])
+
+print("----------COMPRENHESION LIST----------")
+#Las list comprehensions (comprensiones de listas) son una forma concisa y eficiente de crear listas en Python, 
+# utilizando una sola línea de código en lugar de un bucle for tradicional.
+
+squares = [x**2 for x in range(1,11)]
+print("Cuadrados: ", squares)
+
+cubes = [x**3 for x in range(1,11)]
+print("Cubos: ", cubes)
+
+celsius = [0, 10, 20, 30, 40]
+fareheit = [(temp * 9/5)*32 for temp in celsius]
+print("Temperatura en grados F°", fareheit)
+
+numeros_pares = [x for x in range(1,21) if x%2 == 0]
+print("Los numeros pares del 1 al 20 son:", numeros_pares)
+
+numeros_impares = [x for x in range(1,21) if x%2 != 0]
+print("Los numeros impares del 1 al 20 son:", numeros_impares)
+
+#La transpuesta de una matiz
+#esta es la forma larga para entender la logica de lo que se realizo
+# transposed = []
+# for i in range(len(matrix[0])):
+#     print(i)
+#     transposed_row = []
+#     for row in matrix:
+#         print(transposed_row)
+#         transposed_row.append(row[i])
+#     transposed.append(transposed_row)
+#     print(transposed_row)
+
+# print(transposed)
+
+matrix = [[1,2,3],
+          [4,5,6],
+          [7,8,9]]
+
+transposed = [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+print(matrix)
+print(transposed)
+
+#Utilizando la libreria de NUMPY
+matrix = np.array([[1, 2, 3], 
+                   [4, 5, 6], 
+                   [7, 8, 9]])
+
+transposed = matrix.T  # Transponer la matriz
+print("\nUtilizando la libreria NUMPY")
+print("Matriz original:")  
+print(matrix)
+
+print("\nMatriz transpuesta:")
+print(transposed)
