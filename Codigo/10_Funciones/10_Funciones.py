@@ -41,3 +41,30 @@ def print_texts (*text):
     print(text)
 
 print_texts("Hola", "Python", "Curso")#de esta manera podemos pasar varios valores a la función los que queramos
+
+print("\n----------FUNCIONES LAMBDA----------")
+#Las funciones lambda son funciones anónimas, es decir, no tienen nombre, se definen de la siguiente manera
+
+suma = lambda a,b: a + b 
+print("La suma de los dos valores es:", suma(5,10))
+
+multiplicacion = lambda a,b: a * b 
+print("La multiplicacion de los dos valores es:", multiplicacion(5,10))
+
+numeros = list(range(1,11))
+cuadrado = list(map(lambda x : x**2,numeros))#El map sirve especificamente para realizar la operacion en cada elemento de un iterable
+print("Cuadrados", cuadrado)
+
+#Esta es otra manera de realizarlo pero sin el map utilizando una list comprehesion!!!
+# numeros = list(range(1, 11))
+# cuadrado = [x**2 for x in numeros]  # List comprehension
+# print("Cuadrados", cuadrado)
+
+#Obtener los numeros pares
+numeros = list(range(1,21))
+NumerosPares = list(filter(lambda x: x % 2 == 0,numeros))#se usa para filtrar elementos de un iterable basándose en una condición.
+#Solo los elementos que cumplan la condición (es decir, para los que la función devuelve True) se incluyen en el resultado.
+print("Numeros pares", NumerosPares)
+
+
+
