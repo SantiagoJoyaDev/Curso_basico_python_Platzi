@@ -92,18 +92,29 @@ print("El orden de la lista de forma ascendente es",edades)
 
 print("-----FIN-----\n")
 
-print("----------EJERCICIOS DE COMPRENSION(LISTAS)----------")
+print("----------EJERCICIOS DE COMPREHENSION(LISTAS)----------")
 print("Ejercicio 1: Dada una lista de números [1, 2, 3, 4, 5]," 
       "crea una nueva lista que contenga el doble de cada número usando una List Comprehension.")
+numeros = [1, 2, 3, 4, 5]
+operacion = [x**2 for x in numeros]
+print("El doble de los numeros es:", operacion)
 
 print("-----FIN-----\n")
 
 print("Ejercicio 2: Tienes una lista de palabras ['sol', 'mar', 'montaña', 'rio', 'estrella'] y" 
       "quieres obtener una nueva lista con las palabras que tengan más de 3 letras y estén en mayúsculas.")
+palabras = ["sol", "mar", "montaña", "rio", "estrella"]
+conversion = [palabra.upper() for palabra in palabras if len(palabra) > 3]
+print("Las palabras filtradas y en mayusculas son:", conversion)
 
 print("-----FIN-----\n")
 
 print("Ejercicio 3: Tienes dos listas, una de claves ['nombre', 'edad', 'ocupación'] y otra de valores ['Juan', 30, 'Ingeniero']." 
       "Crea un diccionario combinando ambas listas usando una List Comprehension.")
+claves = ['nombre', 'edad', 'ocupación']
+valores = ['Juan', 30, 'Ingeniero']
+
+combinacion_dict = {claves[i]:valores[i] for i in range(len(claves))}
+print("Los valores del diccionario son:", combinacion_dict)
 
 print("-----FIN-----\n")
