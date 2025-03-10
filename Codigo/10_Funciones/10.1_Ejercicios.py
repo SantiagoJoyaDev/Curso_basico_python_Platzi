@@ -14,22 +14,22 @@ print("El resultado de la suma es: ", my_operacion(5,10))
 print("----------FIN----------")
 
 print("Ejercicio 3: Cuadrado de un número.Crea una función que reciba un número y devuelva su cuadrado.")
-def my_operacion(num1):
+def my_operacion1(num1):
     my_cuadrado = num1 ** 2
     return my_cuadrado
-print("El cuadrado del número es: ", my_operacion(5))
+print("El cuadrado del número es: ", my_operacion1(5))
 print("----------FIN----------\n")
 
 print("----------EJERCICIOS INTERMEDIO----------")
 
 print("Ejercicio 4: Función con valores por defecto.Crea una función que calcule el área de un rectángulo. Si no se proporciona la altura, debe asumir que es un cuadrado.")
-def my_operacion (base,altura = None):#si se quiere probar el else simplemente se le borra el valor de none a la altura
+def my_operacion2(base,altura = None):#si se quiere probar el else simplemente se le borra el valor de none a la altura
     if altura == None:
         altura_none = base ** 2
         return altura_none
     else:
         return base * altura
-print("El área del cuadrado es: ", my_operacion(5))#y aqui en esta parte se agrega el valor de la altura
+print("El área del cuadrado es: ", my_operacion2(5))#y aqui en esta parte se agrega el valor de la altura
 print("----------FIN----------")
 
 print("Ejercicio 5: Define una función que reciba una lista de números y devuelva una nueva lista solo con los números pares.")
@@ -52,7 +52,7 @@ print("----------FIN----------\n")
 
 print("----------EJERCICIOS DIFICL----------")
 print("Ejercicio 7: Crea una función que reciba dos números y una operación (+, -, *, /) y devuelva el resultado de la operación.")
-def my_operacion (num1,num2,operacion):
+def my_operacion3(num1,num2,operacion):
     if operacion == '+':
         return num1 + num2
     elif operacion == '-':
@@ -63,7 +63,7 @@ def my_operacion (num1,num2,operacion):
         return num1 / num2
     else:
         print("Ingresa el valor correcto")
-print("El resultado de la operacion es: ",my_operacion(3,23,"+"))        
+print("El resultado de la operacion es: ",my_operacion3(3,23,"+"))        
 print("----------FIN----------")
 
 print("Ejercicio 8: Define una función que genere la serie de Fibonacci hasta un número dado.")
