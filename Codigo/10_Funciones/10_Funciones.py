@@ -66,5 +66,68 @@ NumerosPares = list(filter(lambda x: x % 2 == 0,numeros))#se usa para filtrar el
 #Solo los elementos que cumplan la condición (es decir, para los que la función devuelve True) se incluyen en el resultado.
 print("Numeros pares", NumerosPares)
 
+print("\n----------FUNCIONES RECURSIVIDAD----------")
 
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+    #factorial(5) = 5 * factorial(4)
+    #factorial(4) = 4 * factorial(3)
+    #factorial(3) = 3 * factorial(2)
+    #factorial(2) = 2 * factorial(1)
+    #factorial(1) = 1 * factorial(0)
+    #factorial(0) = 1  (CASO BASE, se detiene la recursión)
+    
+    #factorial(0) = 1
+    # factorial(1) = 1 * 1 = 1
+    # factorial(2) = 2 * 1 = 2
+    # factorial(3) = 3 * 2 = 6
+    # factorial(4) = 4 * 6 = 24
+    # factorial(5) = 5 * 24 = 120
 
+operacion_factorial = print(factorial(5))
+
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+    #F(n)   =    F(n−1)       +    F(n−2)     formula de fibonacci
+    #fibonacci(5) = fibonacci(4) + fibonacci(3)
+    # fibonacci(4) = fibonacci(3) + fibonacci(2)
+    # fibonacci(3) = fibonacci(2) + fibonacci(1)
+    # fibonacci(2) = fibonacci(1) + fibonacci(0)
+
+    #fibonacci(2) = fibonacci(1) + fibonacci(0) = 1 + 0 = 1
+    #fibonacci(3) = fibonacci(2) + fibonacci(1) = 1 + 1 = 2
+    #fibonacci(4) = fibonacci(3) + fibonacci(2) = 2 + 1 = 3
+    #fibonacci(5) = fibonacci(4) + fibonacci(3) = 3 + 2 = 5 #Aqui lo que en realidad hace
+
+number = 5
+print(fibonacci(number))
+
+#Sumatoria de numeros naturales
+def numeros_naturales(n):
+    if n == 0:
+        return 0
+    else:
+        return n + numeros_naturales(n-1)
+
+print(numeros_naturales(5))
+    #numeros_naturales(5) = 5 + numeros_naturales(4)
+    #numeros_naturales(4) = 4 + numeros_naturales(3)
+    #numeros_naturales(3) = 3 + numeros_naturales(2)
+    #numeros_naturales(2) = 2 + numeros_naturales(1)
+    #numeros_naturales(1) = 1 + numeros_naturales(0)
+    #numeros_naturales(0) = 0 (Caso base: aquí se detiene la recursión)
+    
+    #numeros_naturales(0) = 0
+    #numeros_naturales(1) = 1 + 0 = 1
+    #numeros_naturales(2) = 2 + 1 = 3
+    #numeros_naturales(3) = 3 + 3 = 6
+    #numeros_naturales(4) = 4 + 6 = 10
+    #numeros_naturales(5) = 5 + 10 = 15
