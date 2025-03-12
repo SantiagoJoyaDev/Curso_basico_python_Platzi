@@ -52,3 +52,75 @@ class MyFutbolista:
 my_player = MyFutbolista()
 print(f"Name: {my_player.name} surname: {my_player.surname} Dorsal: {my_player.tshirt}")
 my_player.run()
+
+class Operaciones:
+    def __init__(self,a,b):
+        self.a = a
+        self.b = b
+        
+    def suma(self):
+        return self.a + self.b
+        #Esta es otra manera de poder realizarlo
+        # resultado = self.a + self.b
+        # print("La suma es:", resultado)
+    
+    def resta(self):
+        return self.a - self.b
+        #Esta es otra manera de poder realizarlo
+        # resultado = self.a - self.b
+        # print("La resta es:", resultado)
+    
+    def multiplicacion(self):
+        return self.a * self.b
+        #Esta es otra manera de poder realizarlo
+        # resultado = self.a * self.b
+        # print("La multiplicacion es:", resultado)
+    
+    def division(self):
+        return self.a / self.b
+        #Esta es otra manera de poder realizarlo
+        # resultado = self.a / self.b
+        # print("La division es:", resultado)
+
+#Para la otra forma la impresion seria asi:
+suma = Operaciones(4,6)
+print("La suma es:", suma.suma())
+suma = Operaciones(2025,23)
+print("La otra suma es es:", suma.suma())
+# suma = Operaciones(123,9)
+# suma.suma() 
+
+resta = Operaciones(34,4)
+print("La resta es:", resta.resta())
+# resta = Operaciones(45,63)
+# resta.resta() 
+
+multiplicacion = Operaciones(434,623)
+print("La multiplicacion es:", multiplicacion.multiplicacion())
+# multiplicacion = Operaciones(4543,633)
+# multiplicacion.multiplicacion() 
+
+division = Operaciones(44,56)
+print("La division es:", division.division())
+# division = Operaciones(455,633)
+# division.division() 
+
+class PresentacionDePersonas:
+    def __init__(self,fullname,age,country):
+        self.fullname = fullname
+        self.age = age
+        self.country = country
+        
+    def greeting_1(self):
+        print("y es un gusto para mi poder estar en esta clase con ustedes")
+        
+    def greeting_2(self):
+        print("y espero poder llevarme bien con todos ustedes")
+
+persona_1 = PresentacionDePersonas("Adriana Uzcategui gamboa",23,"Venezuela")
+print(f"\nHola mi nombre es {persona_1.fullname} tengo {persona_1.age} anios y soy del hermoso pais de {persona_1.country}")
+persona_1.greeting_1()
+print("\n")
+persona_2 = PresentacionDePersonas("Julio Cesar Santodomingo",27,"Brasil")
+print(f"Hola mi nombre es {persona_2.fullname} tengo {persona_2.age} anios y soy del pais de {persona_2.country}")
+persona_2.greeting_2()
