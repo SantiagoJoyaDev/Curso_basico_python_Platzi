@@ -1,7 +1,11 @@
 print("----------CLASES----------")
 
-#Las clases son plantillas para crear objetos (instancias) en Python.
+#Las clases: son plantillas para crear objetos (instancias) en Python.
 #Permiten agrupar datos y funcionalidades relacionadas en una sola estructura.
+#Un objeto: representa una entidad con atributos (características) y métodos (comportamientos). 
+#En términos simples, es una estructura que combina datos y funciones que operan sobre esos datos en un solo paquete. 
+#los métodos: son funciones que están definidas dentro de una clase y que describen los comportamientos de los objetos 
+#creados a partir de esa clase.
 
 class MyEmpyPersona:#Para las clases en python ya no la definimos con "snake_case" las definimos con "CamelCase"
     pass#El pass se utiliza como un marcador de posición temporal para el cuerpo de la clase.
@@ -123,4 +127,28 @@ persona_1.greeting_1()
 print("\n")
 persona_2 = PresentacionDePersonas("Julio Cesar Santodomingo",27,"Brasil")
 print(f"Hola mi nombre es {persona_2.fullname} tengo {persona_2.age} anios y soy del pais de {persona_2.country}")
-persona_2.greeting_2()
+persona_2.greeting_2() 
+
+class Estudiante:
+    def __init__(self, name, edad, semestre):
+        self.name = name
+        self.age = edad
+        self.semestre = semestre
+        
+    def estudiar(self):
+        print(f"Hola, mi nombre es {self.name}, tengo {self.age} años y estoy en el semestre {self.semestre}. Y estoy estudiando Ingeniería de Software...")
+
+# Solicitar datos al usuario
+nombre = input("Ingrese su nombre: ")
+edad = input("Ingrese su edad: ")
+semestre = input("Ingrese su semestre: ")
+# Crear una instancia de la clase Estudiante con los datos ingresados
+estudiante1 = Estudiante(nombre, edad, semestre)
+# Llamar al método estudiar
+estudiante1.estudiar()
+
+ 
+
+
+
+
