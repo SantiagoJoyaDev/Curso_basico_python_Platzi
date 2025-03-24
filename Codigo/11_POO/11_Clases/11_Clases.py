@@ -147,8 +147,288 @@ estudiante1 = Estudiante(nombre, edad, semestre)
 # Llamar al método estudiar
 estudiante1.estudiar()
 
+#Biblioteca...
+class Book:
+    """
+    Representa un libro en la biblioteca.
+    
+    Atributos:
+        title (str): Título del libro.
+        author (str): Autor del libro.
+        available (bool): Indica si el libro está disponible para ser prestado.
+    """
+    def __init__(self, title, author):
+        """
+        Inicializa un libro con su título y autor. Por defecto, está disponible.
+        
+        Parámetros:
+            title (str): Título del libro.
+            author (str): Autor del libro.
+        """
+        self.title = title
+        self.author = author
+        self.available = True
+    
+    def borrow(self):
+        """
+        Permite prestar el libro si está disponible. Si no lo está, informa al usuario.
+        """
+        if self.available:
+            self.available = False
+            print(f"El libro {self.title} ha sido prestado")
+        else:
+            print(f"El libro {self.title} no está disponible")
+
+    def return_book(self):
+        """
+        Permite devolver un libro prestado, marcándolo nuevamente como disponible.
+        """
+        self.available = True
+        print(f"El libro {self.title} ha sido devuelto")
+
+
+class User:
+    """
+    Representa un usuario de la biblioteca.
+    
+    Atributos:
+        name (str): Nombre del usuario.
+        user_id (int): Identificador único del usuario.
+        borrowed_books (list): Lista de libros que el usuario ha tomado prestados.
+    """
+    def __init__(self, name, user_id):
+        """
+        Inicializa un usuario con su nombre y un identificador único.
+        
+        Parámetros:
+            name (str): Nombre del usuario.
+            user_id (int): Identificador del usuario.
+        """
+        self.name = name
+        self.user_id = user_id
+        self.borrowed_books = []
+
+    def borrow_book(self, book):
+        """
+        Permite al usuario tomar prestado un libro si está disponible.
+
+        Parámetros:
+            book (Book): Objeto de tipo Book que el usuario desea tomar prestado.
+        """
+        if book.available:
+            book.borrow()
+            self.borrowed_books.append(book)
+        else:
+            print(f"El libro {book.title} no está disponible")
+
+    def return_book(self, book):
+        """
+        Permite al usuario devolver un libro que haya tomado prestado.
+
+        Parámetros:
+            book (Book): Objeto de tipo Book que el usuario desea devolver.
+        """
+        if book in self.borrowed_books:
+            book.return_book()
+            self.borrowed_books.remove(book)
+        else:
+            print(f"El libro {book.title} no está en la lista de prestados")
+
+
+class Library:
+    """
+    Representa una biblioteca que contiene libros y usuarios.
+
+    Atributos:
+        books (list): Lista de libros disponibles en la biblioteca.
+        users (list): Lista de usuarios registrados en la biblioteca.
+    """
+    def __init__(self):
+        """
+        Inicializa la biblioteca con listas vacías de libros y usuarios.
+        """
+        self.books = []
+        self.users = []
+    
+    def add_book(self, book):
+        """
+        Agrega un libro a la colección de la biblioteca.
+
+        Parámetros:
+            book (Book): Objeto de tipo Book que se agregará a la biblioteca.
+        """
+        self.books.append(book)
+        print(f"El libro {book.title} ha sido agregado")
+
+    def register_user(self, user):
+        """
+        Registra un usuario en la biblioteca.
+
+        Parámetros:
+            user (User): Objeto de tipo User que se registrará en la biblioteca.
+        """
+        self.users.append(user)
+        print(f"El usuario {user.name} ha sido registrado")
+
+    def show_available_books(self):
+        """
+        Muestra en la consola la lista de libros disponibles en la biblioteca.
+        """
+        print("Libros disponibles:")
+        for book in self.books:
+            if book.available:
+                print(f"{book.title} por {book.author}")
+
+
+#Crear los libros
+book1 = Book("El principito", "Antoine de Saint-Exupéry")
+book2 = Book("1984", "George Orwell")
+
+#Crear usuario
+user1 = User("Carli", "001")
+
+#Crear Biblioteca
+library = Library()
+library.add_book(book1)
+library.add_book(book2)
+library.register_user(user1)
+
+#Mostrar libros
+library.show_available_books()
+
+#Realizar prestamo
+user1.borrow_book(book1)
+
+#Mostrar libros
+library.show_available_books()
+
+#Devolver libro
+user1.return_book(book1)
+
+#Mostrar libros
+library.show_available_books()
  
+#Concesionario de carros...
+#Realiza un ejercicio en donde se pueda realizar la compra y venta de carros a demas un usuario podra preguntar cuales
+#carros estan disponibles
+print("\n")
+class Car:
+    def __init__(self, model, brand, year, price):
+        self.model = model
+        self.brand = brand
+        self.year = year
+        self.price = price
+        self.available = True  # Estado de disponibilidad del carro
+
+    def sell(self):
+        """Marca el carro como vendido si está disponible."""
+        if self.available:
+            self.available = False
+            print(f"El carro {self.model} de la marca {self.brand} del año {self.year} ya ha sido comprado")
+        else:
+            print(f"El carro {self.model} de la marca {self.brand} del año {self.year} no está disponible")
+
+    def return_car(self):
+        """Marca el carro como disponible nuevamente."""
+        self.available = True
+        print(f"El carro {self.model} de la marca {self.brand} del año {self.year} está de nuevo disponible para la venta")
 
 
+class User1:
+    def __init__(self, name, user_id, balance):
+        self.name = name
+        self.user_id = user_id
+        self.balance = balance  # Saldo del usuario
+        self.purchased_cars = []  # Lista de carros comprados
+
+    def buy_car(self, car):
+        """Permite al usuario comprar un carro si está disponible y tiene suficiente dinero."""
+        if car.available:
+            if self.balance >= car.price:
+                self.balance -= car.price
+                car.sell()
+                self.purchased_cars.append(car)
+                print(f"{self.name} ha comprado el carro {car.model} por ${car.price}. Saldo restante: ${self.balance}")
+            else:
+                print(f"{self.name} no tiene suficiente dinero para comprar el carro {car.model}")
+        else:
+            print(f"El carro {car.model} no está disponible para la venta")
+
+    def sell_car(self, car, dealership):
+        """Permite al usuario vender su carro al concesionario."""
+        if car in self.purchased_cars:
+            self.balance += car.price * 0.8  # Se paga el 80% del precio original al usuario
+            car.return_car()
+            self.purchased_cars.remove(car)
+            dealership.add_car(car)
+            print(f"{self.name} ha vendido el carro {car.model} y ha recibido ${car.price * 0.8}. Saldo actual: ${self.balance}")
+        else:
+            print(f"{self.name} no posee el carro {car.model}")
+
+
+class Dealership:
+    def __init__(self):
+        self.cars = []  # Lista de carros en el concesionario
+        self.users = []  # Lista de usuarios registrados
+
+    def add_car(self, car):
+        """Agrega un carro al concesionario."""
+        self.cars.append(car)
+        print(f"El carro {car.model} de la marca {car.brand} del año {car.year} ha sido agregado al concesionario por ${car.price}")
+
+    def register_user(self, user):
+        """Registra un nuevo usuario en el concesionario."""
+        self.users.append(user)
+        print(f"El usuario {user.name} ha sido registrado con un saldo de ${user.balance}")
+
+    def show_available_cars(self):
+        """Muestra los carros disponibles para la venta."""
+        print("Carros disponibles en el concesionario:")
+        available_cars = [car for car in self.cars if car.available]
+        if available_cars:
+            for car in available_cars:
+                print(f"{car.model} de la marca {car.brand} del año {car.year} - Precio: ${car.price}")
+        else:
+            print("No hay carros disponibles en este momento")
+
+
+# ----------------------------------
+# Ejemplo de uso del concesionario 🚗
+# ----------------------------------
+
+# Crear concesionario
+concesionario = Dealership()
+
+# Agregar carros
+carro1 = Car("Corolla", "Toyota", 2022, 20000)
+carro2 = Car("Civic", "Honda", 2023, 25000)
+carro3 = Car("Mustang", "Ford", 2021, 40000)
+
+concesionario.add_car(carro1)
+concesionario.add_car(carro2)
+concesionario.add_car(carro3)
+
+# Registrar usuarios
+usuario1 = User1("Carlos", 101, 30000)
+usuario2 = User1("Ana", 102, 50000)
+
+concesionario.register_user(usuario1)
+concesionario.register_user(usuario2)
+
+# Mostrar carros disponibles antes de la compra
+concesionario.show_available_cars()
+
+# Usuario compra un carro
+usuario1.buy_car(carro1)  # Carlos compra un Toyota Corolla
+usuario2.buy_car(carro3)  # Ana compra un Ford Mustang
+
+# Mostrar carros disponibles después de la compra
+concesionario.show_available_cars()
+
+# Usuario vende un carro al concesionario
+usuario1.sell_car(carro1, concesionario)  # Carlos vende su Corolla
+
+# Mostrar carros disponibles después de la venta
+concesionario.show_available_cars()
 
 
