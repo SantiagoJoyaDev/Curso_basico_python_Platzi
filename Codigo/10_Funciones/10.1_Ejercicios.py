@@ -50,7 +50,7 @@ print("El numeo de palabras que hay en el texto es: ",my_contador_de_palabras("H
 
 print("----------FIN----------\n")
 
-print("----------EJERCICIOS DIFICL----------")
+print("----------EJERCICIOS DIFICIL----------")
 print("Ejercicio 7: Crea una función que reciba dos números y una operación (+, -, *, /) y devuelva el resultado de la operación.")
 def my_operacion3(num1,num2,operacion):
     if operacion == '+':
