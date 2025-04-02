@@ -199,46 +199,34 @@ print(f"El número {numero} {tipo}.")
 
 print("----------FIN----------")
  
-print("Ejercicio 10: Escribe un programa que permita agregar, eliminar y mostrar tareas pendientes en una lista," 
-      "con opción de marcar tareas como completadas.")
+print("Ejercicio 10: Escribe un programa que permita agregar, eliminar y mostrar las tareas")
 class GestorTareas:
     def __init__(self):
         self.tareas = []
     
     def agregar_tarea(self, tarea):
-        self.tareas.append({"tarea": tarea, "completada": False})
-        print(f"Tarea '{tarea}' agregada.")
+        self.tareas.append(tarea)
     
     def eliminar_tarea(self, indice):
         if 0 <= indice < len(self.tareas):
-            tarea = self.tareas.pop(indice)
-            print(f"Tarea '{tarea['tarea']}' eliminada.")
-        else:
-            print("Índice inválido.")
-    
-    def marcar_completada(self, indice):
-        if 0 <= indice < len(self.tareas):
-            self.tareas[indice]["completada"] = True
-            print(f"Tarea '{self.tareas[indice]['tarea']}' marcada como completada.")
-        else:
-            print("Índice inválido.")
+            self.tareas.pop(indice)
     
     def mostrar_tareas(self):
+        for i, tarea in enumerate(self.tareas):#La función enumerate() en Python se usa para recorrer iterables 
+            #(como listas, tuplas o cadenas) y obtener tanto el índice como el valor de cada elemento en un bucle.
+            print(f"El indice de la tarea agregada es {i} y la tarea es -->{tarea}")
         if not self.tareas:
-            print("No hay tareas pendientes.")
-        else:
-            print("Lista de tareas:")
-            for i, tarea in enumerate(self.tareas):
-                estado = "[X]" if tarea["completada"] else "[ ]"
-                print(f"{i}. {estado} {tarea['tarea']}")
+            print("No hay tareas.")
 
 # Ejemplo de uso
 gestor = GestorTareas()
-gestor.agregar_tarea("Estudiar Python")
-gestor.agregar_tarea("Hacer ejercicio")
-gestor.mostrar_tareas()
-gestor.marcar_completada(0)
+gestor.agregar_tarea("Hacer ejericio")
+gestor.agregar_tarea("Estudiar python")
+gestor.agregar_tarea("Proyecto cepci")
+gestor.agregar_tarea("Trabajar")
+print("Se muestran las tareas sin eliminar ninguna tarea")
 gestor.mostrar_tareas()
 gestor.eliminar_tarea(1)
+print("\nSe muestran las tareas eliminando la tarea de Estudiar python")
 gestor.mostrar_tareas()
 print("----------FIN----------")

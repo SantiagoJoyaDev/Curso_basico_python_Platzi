@@ -101,3 +101,23 @@ celular2.presentacion()
 celular3 = Celular3("Iphone 16 pro max","2025")
 print(f"El modelo del celular es: {celular3.brand} -- {celular3.model}")
 celular3.presentacion()
+
+class Persona:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+    
+    def impresion_datos(self):
+        print("Hola mi nombre es", self.name ,"y tengo ", self.age ," anios")
+        
+class Estudiante(Persona):
+    def __init__(self,name,age,grade):
+        super().__init__(name,age)
+        self.grade = grade
+    
+    def impresion_grado(self):
+        print("A demas estoy en grado",self.grade,"en el colegio")
+        
+estudiante = Estudiante("Santiago","23",11)
+estudiante.impresion_datos()
+estudiante.impresion_grado()
