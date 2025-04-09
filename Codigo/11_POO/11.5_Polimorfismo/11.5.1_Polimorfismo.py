@@ -32,9 +32,11 @@ class Gato(Animal):
 
 perro = Perro()
 gato = Gato()
+animal = Animal()
 
 print(perro.hacer_sonido())
 print(gato.hacer_sonido())
+print(animal.hacer_sonido())
 
 print("---------POLIMORFISMO POR DUCK TYPING (TIPADO DINAMICO)----------")
 #En este polimorfismo lo que importa es que aunque se use el mismo metodo dependiendo de la clase se comporta diferente

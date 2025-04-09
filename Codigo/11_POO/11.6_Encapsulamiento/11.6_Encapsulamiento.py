@@ -13,8 +13,8 @@ class MiClase:
         self._name = "Santiago Joya Blanco"#Los atributos escritos asi --> son entendidos como privados _name,_color, etc etc......
         self._id = 1005233962
         self._city = "Bucaramanga"
-        self.__edad = 23#Este es un atributo muy privado por lo que si quiero acceder a el me va arrojar error y de identifican
-        #debido a que ahora se define con doble "__" es decit __name,__color, etc etc....
+        #self.__edad = 23#Este es un atributo muy privado por lo que si quiero acceder a el me va arrojar error y de identifican
+        #debido a que ahora se define con doble "__" es decir __name,__color, etc etc....
         
     def _presentacion(self):#Tambien existen atributos privados
         print(f"Hola me llamo {self._name} mi cedula es {self._id} y vivo en {self._city}")
@@ -26,7 +26,7 @@ class MiClase:
 persona = MiClase()
 print(persona._name,persona._id,persona._city)#Si quiero agregar aqui el __edad me arroja error ya que es un atributo muy privado
 persona._presentacion()
-#persona.__edad() entonces esto me arroja error porque como es privado no se puede acceder al metodo privado
+persona.__edad() #entonces esto me arroja error porque como es privado no se puede acceder al metodo privado
 
 print("\n----------GETTERS Y SETTERS----------")
 #Los getters y setters son métodos que permiten controlar el acceso y la modificación de los atributos de una clase. 
@@ -55,7 +55,7 @@ edad = persona.get_edad()
 print("Aqui accedemos con metodos privados getter")
 print("Hola mi nombre es", nombre ,"y mi edad es", edad ,"anios")
 
-class Persona:#Con metodos muy privados
+class Persona1:#Con metodos muy privados
     def __init__(self,name,age):
         self.__name = name
         self.__age = age
@@ -73,7 +73,7 @@ print("Aqui accedemos con metodos muy privados getter")
 print("Hola mi nombre es", nombre ,"y mi edad es", edad ,"anios")
 
 #SETTERS
-class Persona:#Con metodo privados
+class Persona2:#Con metodo privados
     def __init__(self,name,age):
         self._name = name
         self._age = age
@@ -87,7 +87,7 @@ class Persona:#Con metodo privados
     def get_edad(self):
         return self._age
 
-persona = Persona("Santiago Joya Blanco",23)
+persona = Persona2("Santiago Joya Blanco",23)
 nombre = persona.get_nombre()
 edad = persona.get_edad()
 print("\nAqui accedemos con metodos privados setter")
@@ -98,7 +98,7 @@ nombre_nuevo = persona.get_nombre()
 print("Aqui accedemos con metodos privados setter")
 print("Hola mi nombre es", nombre_nuevo ,"y mi edad es", edad ,"anios")
 
-class Persona:#Con metodos muy privados
+class Persona3:#Con metodos muy privados
     def __init__(self,name,age):
         self.__name = name
         self.__age = age
@@ -112,7 +112,7 @@ class Persona:#Con metodos muy privados
     def get_edad(self):
         return self.__age
 
-persona = Persona("Santiago Joya Blanco",23)
+persona = Persona3("Santiago Joya Blanco",23)
 nombre = persona.get_nombre()
 edad = persona.get_edad()
 print("\nAqui accedemos con metodos muy privados setter")
@@ -153,12 +153,12 @@ saludo_modificado()
 #Forma correcta de utilizar el decorador
 print("\nUsando el decorador de manera correcta")
 @decorador
-def saludo():
+def saludo1():
     print("Hola Santiago como vamos ?")
 saludo()
 
 print("\n----------DECORADOR PROPERTY----------")
-class Persona:#Con metodo privados
+class Persona4:#Con metodo privados
     def __init__(self,name,age):
         self._name = name
         self._age = age
@@ -182,7 +182,7 @@ class Persona:#Con metodo privados
     
 
 #GET CON DECORADOR
-persona = Persona("Santiago Joya Blanco",23)
+persona = Persona4("Santiago Joya Blanco",23)
 nombre = persona.nombre#La diferencia es que al final ya no le tengo que colocar () ya que estoy usando el @property
 #es decir ya no lo uso como una funcion si no como una PROPIEDAD
 edad = persona.edad

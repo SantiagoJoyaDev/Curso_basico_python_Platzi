@@ -54,70 +54,73 @@ print(f"\nEl nombre de la galleta es {galleta_de_uvas_pasas.name} y los ingredie
 
 #Ejemplo de la herencia multiple
 class Celular:
-    def __init__(self,brand):
+    def __init__(self, brand):
         self.brand = brand
-        
-    def presentacion(self):
-        print("Este iphone es actualmente el mejor desarrollo de parte de Apple debido a su gran capacidad para tomar fotos en 4K....")
 
-class Celular1(Celular):# Herencia simple
-    def __init__(self,brand,camera,storage,port):
-        super().__init__(brand)
+    def presentacion(self):
+        print("Este iPhone es actualmente el mejor desarrollo de Apple con cámara 4K...")
+
+# Clase con características técnicas
+class CaracteristicasTecnicas:
+    def __init__(self, camera, storage, port):
         self.camera = camera
         self.storage = storage
         self.port = port
 
-class Celular2(Celular1):# Herencia multiple
-    """Clase que añade el atributo 'color' al celular."""
-    def __init__(self, brand, camera, storage, port, color):
-        super().__init__(brand, camera, storage, port)
+# Clase que añade el color
+class Color:
+    def __init__(self, color):
         self.color = color
-        
-class Celular3(Celular):
-    def __init__(self,brand,model):
-        super().__init__(brand)
+
+# Herencia múltiple: esta clase hereda de Celular, CaracteristicasTecnicas y Color
+class CelularAvanzado(Celular, CaracteristicasTecnicas, Color):
+    def __init__(self, brand, camera, storage, port, color, model):
+        Celular.__init__(self, brand)
+        CaracteristicasTecnicas.__init__(self, camera, storage, port)
+        Color.__init__(self, color)
         self.model = model
-    
 
-celular = Celular("Iphone")
-print(f"\nLa marca del celular es: {celular.brand}")
+    def mostrar_info(self):
+        print("\n=== Información del Celular ===")
+        print(f"Marca: {self.brand}")
+        print(f"Modelo: {self.model}")
+        print(f"Cámara: {self.camera}")
+        print(f"Almacenamiento: {self.storage}")
+        print(f"Puerto: {self.port}")
+        print(f"Color: {self.color}")
 
-celular1 = Celular1("iPhone 15 Pro Max", "238 Mpx", "512 GB", "lightning")
-print("\nLas características del celular son:")
-print(f"- Brand: {celular1.brand}")
-print(f"- Camera: {celular1.camera}")
-print(f"- Storage: {celular1.storage}")
-print(f"- Port: {celular1.port}")
+# Crear una instancia(objeto)
+celular = CelularAvanzado(brand="iPhone",camera="238 Mpx",storage="512 GB",port="Lightning",color="Blanco perla",model="15 Pro Max")
 
-celular2 = Celular2("iPhone 15 Pro Max", "238 Mpx", "512 GB", "lightning","Blanco perla")
-print("\nLas características del celular son:")
-print(f"- Brand: {celular2.brand}")
-print(f"- Camera: {celular2.camera}")
-print(f"- Storage: {celular2.storage}")
-print(f"- Port: {celular2.port}")
-print(f"- Port: {celular2.color}")
-celular2.presentacion()
-
-celular3 = Celular3("Iphone 16 pro max","2025")
-print(f"El modelo del celular es: {celular3.brand} -- {celular3.model}")
-celular3.presentacion()
+# Mostrar información
+celular.mostrar_info()
+celular.presentacion()
 
 class Persona:
-    def __init__(self,name,age):
+    def __init__(self, name, age):
         self.name = name
         self.age = age
     
     def impresion_datos(self):
-        print("Hola mi nombre es", self.name ,"y tengo ", self.age ," anios")
-        
-class Estudiante(Persona):
-    def __init__(self,name,age,grade):
-        super().__init__(name,age)
+        print("Hola, mi nombre es", self.name, "y tengo", self.age, "años.")
+
+# Clase separada que maneja los datos académicos
+class Academico:
+    def __init__(self, grade):
         self.grade = grade
-    
+
     def impresion_grado(self):
-        print("A demas estoy en grado",self.grade,"en el colegio")
-        
-estudiante = Estudiante("Santiago","23",11)
+        print("Además, estoy en grado", self.grade, "en el colegio.")
+
+# Herencia múltiple: combina Persona y Academico
+class Estudiante(Persona, Academico):
+    def __init__(self, name, age, grade):
+        Persona.__init__(self, name, age)
+        Academico.__init__(self, grade)
+
+# Crear un estudiante
+estudiante = Estudiante("Santiago", "23", 11)
+
+# Usar métodos de ambas clases base
 estudiante.impresion_datos()
 estudiante.impresion_grado()

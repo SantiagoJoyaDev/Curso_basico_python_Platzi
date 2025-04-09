@@ -82,11 +82,11 @@ class ContarVocales(Vocales):
         #que sea una vocal va a devolver un 1 y luego suma los 1 los cuales son los valores de las vocales para saber el total de vocales
         return cont
         
-palabra = input("Ingrese una palabra: ")
-contador = ContarVocales(palabra)
+word = input("Ingrese una palabra: ")
+contador = ContarVocales(word)
 cantidad_vocales = contador.contar_vocales()
 
-print(f"La palabra '{palabra}' tiene {cantidad_vocales} vocales.")
+print(f"La palabra '{word}' tiene {cantidad_vocales} vocales.")
 print("----------FIN----------")
 
 print("Ejercicio 5: Escribe un programa que muestre la tabla de multiplicar de un número ingresado por el usuario.")
