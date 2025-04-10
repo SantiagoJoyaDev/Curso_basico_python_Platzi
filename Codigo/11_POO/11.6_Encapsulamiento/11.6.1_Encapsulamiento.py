@@ -66,7 +66,7 @@ class Persona1:#Con metodos muy privados
     def get_edad(self):
         return self.__age
 
-persona = Persona("Santiago Joya Blanco",23)
+persona = Persona1("Santiago Joya Blanco",23)
 nombre = persona.get_nombre()
 edad = persona.get_edad()
 print("Aqui accedemos con metodos muy privados getter")
@@ -155,7 +155,7 @@ print("\nUsando el decorador de manera correcta")
 @decorador
 def saludo1():
     print("Hola Santiago como vamos ?")
-saludo()
+saludo1()
 
 print("\n----------DECORADOR PROPERTY----------")
 class Persona4:#Con metodo privados
