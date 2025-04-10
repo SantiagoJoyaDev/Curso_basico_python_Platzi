@@ -26,7 +26,7 @@ class MiClase:
 persona = MiClase()
 print(persona._name,persona._id,persona._city)#Si quiero agregar aqui el __edad me arroja error ya que es un atributo muy privado
 persona._presentacion()
-persona.__edad() #entonces esto me arroja error porque como es privado no se puede acceder al metodo privado
+#persona.__edad() #entonces esto me arroja error porque como es privado no se puede acceder al metodo privado
 
 print("\n----------GETTERS Y SETTERS----------")
 #Los getters y setters son métodos que permiten controlar el acceso y la modificación de los atributos de una clase. 
@@ -81,11 +81,11 @@ class Persona2:#Con metodo privados
     def get_nombre(self):
         return self._name
     
-    def set_nombre(self,new_name):
-        self._name = new_name
-    
     def get_edad(self):
         return self._age
+    
+    def set_nombre(self,new_name):
+        self._name = new_name
 
 persona = Persona2("Santiago Joya Blanco",23)
 nombre = persona.get_nombre()
