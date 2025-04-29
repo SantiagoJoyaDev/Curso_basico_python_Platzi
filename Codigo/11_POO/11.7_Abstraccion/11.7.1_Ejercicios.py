@@ -371,98 +371,75 @@ print("----------FIN----------")
 
 print("Ejercicio 9: Clase abstracta Reporte con: propiedad abstracta tipo,método abstracto generar(),Crea ReportePDF y ReporteExcel."
       "Luego haz una función que reciba una lista de reportes y los genere según su tipo.")
-# Clase abstracta
 class Reporte(ABC):
-    @property
-    @abstractmethod
-    def tipo(self):
-        pass
+      @property
+      @abstractmethod
+      def tipo(self):
+            pass
+      
+      @abstractmethod
+      def generar(self):
+            pass
 
-    @abstractmethod
-    def generar(self):
-        pass
-
-# Clase ReportePDF
 class ReportePDF(Reporte):
-    @property
-    def tipo(self):
-        return "PDF"
+      @property
+      def tipo(self):
+            return "PDF"
+      
+      def generar(self):
+            print(f"Generando reporte en formato {self.tipo}")
 
-    def generar(self):
-        print("Generando reporte en formato PDF...")
-
-# Clase ReporteExcel
 class ReporteExcel(Reporte):
-    @property
-    def tipo(self):
-        return "Excel"
+      @property
+      def tipo(self):
+            return "EXCEL"
+      
+      def generar(self):
+            print(f"Generando reporte en formato {self.tipo}")
 
-    def generar(self):
-        print("Generando reporte en formato Excel...")
+def generaer_reportes(lista_reportes):
+      for reporte in lista_reportes:
+            reporte.generar()
 
-# Función que recibe una lista de reportes y los genera
-def generar_reportes(lista_reportes):
-    for reporte in lista_reportes:
-        print(f"Tipo de reporte: {reporte.tipo}")
-        reporte.generar()
-
-# Uso
-reporte1 = ReportePDF()
-reporte2 = ReporteExcel()
-
-reportes = [reporte1, reporte2]
-generar_reportes(reportes)
+reportes = [ReportePDF(), ReporteExcel()]
+generaer_reportes(reportes)
 
 print("----------FIN----------")
 
 print("Ejercicio 10: Clase abstracta Vehiculo con: método abstracto fabricar(),Clase abstracta FabricaVehiculos con: método de clase abstracto" 
       "crear_vehiculo()Implementa subclases como Auto y Moto con sus fábricas respectivas.")
-# Clase abstracta Vehiculo
 class Vehiculo(ABC):
-    @abstractmethod
-    def fabricar(self):
-        pass
+      @abstractmethod
+      def fabricar(self):
+            pass
 
-# Clase abstracta FabricaVehiculos
 class FabricaVehiculos(ABC):
-    @classmethod
-    @abstractmethod
-    def crear_vehiculo(cls):
-        pass
+      @classmethod
+      @abstractmethod
+      def crear_vehiculo(cls):
+            pass
 
-# Subclase Auto
 class Auto(Vehiculo):
-    def fabricar(self):
-        print("Fabricando un auto...")
-
-# Subclase Moto
+      def fabricar(self):
+            print("Fabricando un auto")
+      
+      @classmethod
+      def crear_vehiculo(cls):
+            print("Creando un auto")
+            return cls()
+      
 class Moto(Vehiculo):
-    def fabricar(self):
-        print("Fabricando una moto...")
+      def fabricar(self):
+            print("Fabricando una Moto")
+      
+      @classmethod
+      def crear_vehiculo(cls):
+            print("Creando una Moto")
+            return cls()
 
-# Fábrica de Autos
-class FabricaAutos(FabricaVehiculos):
-    @classmethod
-    def crear_vehiculo(cls):
-        print("Creando un nuevo Auto en la fábrica")
-        return Auto()
-
-# Fábrica de Motos
-class FabricaMotos(FabricaVehiculos):
-    @classmethod
-    def crear_vehiculo(cls):
-        print("Creando una nueva Moto en la fábrica")
-        return Moto()
-
-# --- Uso ---
-# Crear un auto
-fabrica_auto = FabricaAutos()
-auto = fabrica_auto.crear_vehiculo()
+auto = Auto.crear_vehiculo()
+moto = Moto.crear_vehiculo()
 auto.fabricar()
-
-# Crear una moto
-fabrica_moto = FabricaMotos()
-moto = fabrica_moto.crear_vehiculo()
 moto.fabricar()
 
 print("----------FIN----------")
