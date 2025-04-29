@@ -30,28 +30,35 @@ print("----------CLASES ABSTRACTAS----------")
 # métodos que se definen pero no se implementan —las clases hijas están obligadas a implementarlos.
 
 class Persona(ABC):
-    def __init__(self, nombre, edad, sexo, actividad):
+    def __init__(self, nombre, edad, sexo):
         self.nombre = nombre
         self.edad = edad
         self.sexo = sexo
-        self.actividad = actividad
-    
+        
     @abstractmethod
     def hacer_actividad(self):
         pass
-    
+
     def presentarse(self):
-        print(f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años")
+        print(f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años sexo: {self.sexo}")
 
 class Estudiante(Persona):
+    def __init__(self, nombre, edad, sexo, carrera):
+        super().__init__(nombre, edad, sexo)
+        self.carrera = carrera
+
     def hacer_actividad(self):
-        print(f"Y estoy estudiando: {self.actividad}\n")
+        print(f"Y estoy estudiando: {self.carrera}")
 
 class Trabajador(Persona):
-    def hacer_actividad(self):
-        print(f"Y actualmente trabajo en el ámbito de la {self.actividad}")
+    def __init__(self, nombre, edad, sexo, profesion):
+        super().__init__(nombre, edad, sexo)
+        self.profesion = profesion
 
-# Instancias válidas (porque las clases hijas implementan el método abstracto)
+    def hacer_actividad(self):
+        print(f"Y actualmente trabajo en el ámbito de la {self.profesion}")
+
+# Instancias válidas
 santiago = Estudiante("Santiago", 23, "Masculino", "Programación")
 kathe = Trabajador("Katherine", 32, "Femenino", "Programación")
 
@@ -60,48 +67,118 @@ santiago.hacer_actividad()
 
 kathe.presentarse()
 kathe.hacer_actividad()
-Estudiante.hacer_actividad(112)
 
+
+#Con el uso de @classmethod
+
+class Persona1(ABC):
+    def __init__(self, nombre, edad, sexo):
+        self.nombre = nombre
+        self.edad = edad
+        self.sexo = sexo
+
+    @property
+    @abstractmethod
+    def actividad(self):
+        pass
+
+    @abstractmethod
+    def hacer_actividad(self):
+        pass
+
+    @classmethod
+    @abstractmethod
+    def crear(cls, nombre, edad, sexo, actividad):
+        pass
+
+    def presentarse(self):
+        print(f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años sexo: {self.sexo}")
+
+class Estudiante1(Persona1):
+    def __init__(self, nombre, edad, sexo, carrera):
+        super().__init__(nombre, edad, sexo)
+        self.carrera = carrera
+
+    @property
+    def actividad(self):
+        return self.carrera
+
+    def hacer_actividad(self):
+        print(f"Y estoy estudiando: {self.actividad}\n")
+
+    @classmethod
+    def crear(cls, nombre, edad, sexo, actividad):
+        return cls(nombre, edad, sexo, actividad)
+
+class Trabajador1(Persona1):
+    def __init__(self, nombre, edad, sexo, profesion):
+        super().__init__(nombre, edad, sexo)
+        self.profesion = profesion
+
+    @property
+    def actividad(self):
+        return self.profesion
+
+    def hacer_actividad(self):
+        print(f"Y actualmente trabajo en el ámbito de la {self.actividad}")
+
+    @classmethod
+    def crear(cls, nombre, edad, sexo, actividad):
+        return cls(nombre, edad, sexo, actividad)
+
+# Ahora usamos el método de clase para crear los objetos
+santiago = Estudiante1.crear("Santiago", 23, "Masculino", "Programación")
+kathe = Trabajador1.crear("Katherine", 32, "Femenino", "Programación")
+
+santiago.presentarse()
+santiago.hacer_actividad()
+
+kathe.presentarse()
+kathe.hacer_actividad()
 
 class Model(ABC):
     @property
     @abstractmethod
     def tabla(self):
         pass
-    
+
     @abstractmethod
     def guardar(self):
         pass
-    
+
     @classmethod
-    def buscar_por_id(self, _id):
-        print(f"Buscando por id {_id} en la tabla {self.tabla}")
-        
+    def buscar_por_id(cls, _id):
+        print(f"Buscando por id {_id} en la tabla {cls().tabla}")
+
 class Usuario(Model):
-    tabla = "Usuario"
-    
+    def __init__(self):
+        self._tabla = "Usuario"
+
+    @property
+    def tabla(self):
+        return self._tabla
+
     def guardar(self):
-        print("guardando usuario")
+        print("Guardando usuario")
         
+# Uso
 usuario = Usuario()
 usuario.guardar()
 Usuario.buscar_por_id(123)
 
 #Solo con @property
-class Persona:
+class Persona2:
     def __init__(self, nacimiento):
         self.nacimiento = nacimiento
 
     @property
     def edad(self):
-        return 2025 - self.nacimiento
+        return 2025 - self.nacimiento 
 
-p = Persona(2000)
+p = Persona2(2000)
 print(p.edad)  # Output: 25
 
 #@property + @abstractmethod
-from abc import ABC, abstractmethod
-
 class Figura(ABC):
     @property
     @abstractmethod
@@ -120,7 +197,7 @@ c = Cuadrado(4)
 print(c.area)  # Output: 16
 
 #@classmethod
-class Usuario:
+class Usuario1:
     def __init__(self, nombre):
         self.nombre = nombre
 
@@ -128,7 +205,7 @@ class Usuario:
     def anonimo(cls):
         return cls("Anónimo")
 
-u = Usuario.anonimo()
+u = Usuario1.anonimo()
 print(u.nombre)  # Output: Anónimo
 
 
