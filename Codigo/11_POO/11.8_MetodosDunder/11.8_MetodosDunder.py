@@ -98,5 +98,3 @@ while True:
 
     else:
         print("Opción no válida. Por favor, selecciona 1 o 2.")
-
-    
