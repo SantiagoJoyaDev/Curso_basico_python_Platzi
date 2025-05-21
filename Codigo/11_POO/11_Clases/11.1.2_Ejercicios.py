@@ -1,4 +1,4 @@
-print("----------EJERCICIOS DE FUNCIONES----------")
+print("----------EJERCICIOS DE CLASES----------")
 print("----------EJERCICIOS FACIL----------")
 print("Ejercicio 1: Crea una clase Persona con los atributos nombre y edad. Luego, instancia un objeto y muestra sus atributos.")
 class MyPersona:

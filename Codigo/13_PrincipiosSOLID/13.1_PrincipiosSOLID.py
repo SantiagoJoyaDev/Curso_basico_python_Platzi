@@ -74,6 +74,7 @@ class Duck(FlyingBird, SwimmingBird):  # Pato, hereda ambas capacidades
 
 ave1 = Sparrow()
 print(ave1.make_sound())  # Salida: Pío
+print(ave1.fly())  # Salida: Estoy volando
 ave2 = Penguin()
 print(ave2.make_sound())  # Salida: Pío
 print(ave2.swim())  # Salida: Estoy nadando
@@ -81,6 +82,7 @@ ave3 = Duck()
 print(ave3.make_sound())  # Salida: Pío
 print(ave3.fly())  # Salida: El pato está volando
 print(ave3.swim())  # Salida: El pato está nadando
+print("")
 
 #Ejemplo de ISP
 # === Interfaces simples ===
@@ -132,13 +134,10 @@ multi.scan("Documento3.pdf")
 todo_en_uno.print("Documento4.pdf")
 todo_en_uno.scan("Documento4.pdf")
 todo_en_uno.send_fax("Documento4.pdf")
+print("")
 
 #Este código sigue el principio de segregación de interfaces (ISP) porque las clases Printer y Scanner tienen interfaces separadas y 
 #no están obligadas a implementar métodos que no utilizan.
-
-mfp = MultiFunctionPrinter()
-mfp.print("Contrato.pdf")
-mfp.scan("Identificación.png")
 
 #Ejemplo de DIP
 # Clase base
@@ -169,8 +168,10 @@ class App:
 mysql_db = MySQLDatabase()
 app = App(mysql_db)
 app.start()  # Salida: Iniciando aplicación... Conectando a MySQL...
+print("")
 mongo_db = MongoDBDatabase()
 app = App(mongo_db)
+app.start()  # Salida: Iniciando aplicación... Conectando a MongoDB...
 
 #Este código sigue el principio de inversión de dependencias (DIP) porque las clases MySQLDatabase y MongoDBDatabase dependen de la 
 #abstracción Database y no de implementaciones concretas. Esto permite cambiar la base de datos sin modificar el código que la utiliza.

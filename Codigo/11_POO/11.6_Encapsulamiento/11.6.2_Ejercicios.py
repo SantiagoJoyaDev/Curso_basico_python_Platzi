@@ -1,4 +1,4 @@
-print("----------EJERCICIOS DE Encapsulamiento----------")
+print("----------EJERCICIOS DE ENCAPSULAMIENTO----------")
 print("----------EJERCICIOS FACIL----------")
 print("Ejercicio 1: Crear una clase Libro con atributos privados: Atributos: título, autor, año.Crea métodos get para acceder a cada uno."
       "Imprime los datos usando los métodos.")

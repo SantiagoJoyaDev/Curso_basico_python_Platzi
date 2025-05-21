@@ -1,4 +1,4 @@
-print("----------EJERCICIOS DE MODELOS----------")
+print("----------EJERCICIOS DE MODULOS----------")
 print("----------EJERCICIOS FACIL----------")
 print("Ejercicio 1: Usa el módulo math para calcular la raíz cuadrada de un número ingresado por el usuario.")
 import math

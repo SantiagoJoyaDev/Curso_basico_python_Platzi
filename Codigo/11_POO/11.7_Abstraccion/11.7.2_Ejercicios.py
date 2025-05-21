@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-print("----------EJERCICIOS DE Encapsulamiento----------")
+print("----------EJERCICIOS DE ABSTRACCION----------")
 print("----------EJERCICIOS FACIL----------")
 print("Ejercicio 1: Crea una clase abstracta Animal con un método abstracto hacer_sonido(). Luego crea dos clases hijas (Perro y Gato)" 
       "que implementen ese método.")

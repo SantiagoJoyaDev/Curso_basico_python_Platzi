@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-print("----------EJERCICIOS DE Enc----------")
+print("----------EJERCICIOS DE METODOS DUNDER----------")
 print("----------EJERCICIOS FACIL----------")
 print("Ejercicio 1: __init__ y __str__ Clase Libro"
 "Crea una clase Libro con atributos titulo y autor. Implementa __init__ para inicializar los valores y __str__ para que al imprimir el objeto" 
