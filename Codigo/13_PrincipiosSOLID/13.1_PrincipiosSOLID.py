@@ -158,7 +158,10 @@ class MongoDBDatabase(Database):
 
 # Módulo de alto nivel que depende de la abstracción
 class App:
-    def __init__(self, database: Database):
+    def __init__(self, database: Database):#Aquí se inyecta la dependencia de la base de datos a través del constructor.
+        # Esto permite que la clase App dependa de la abstracción Database y no de implementaciones concretas.
+        #se usa el databse: Database para indicar que el parámetro database debe ser una instancia de la clase 
+        # Database o de una subclase de Database.
         self.database = database
 
     def start(self):
