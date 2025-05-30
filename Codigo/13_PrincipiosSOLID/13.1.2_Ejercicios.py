@@ -252,6 +252,36 @@ print("----------FIN----------")
 print("Ejercicio 6: [OCP + LSP] Crea una clase Exportador con subclases ExportadorCSV, ExportadorJSON, etc. Asegúrate de que cada" 
       "exportador pueda usarse sin romper el sistema.")
 
+class Exportador:
+      def __init__(self,nombre_archivo,nombre_del_usuario,formato):
+            self.nombre_archivo = nombre_archivo
+            self.nombre_del_usuario = nombre_del_usuario
+            self.formato = formato
+      
+      def exportar(self, nombre_archivo,nombre_del_usuario,formato):
+            raise NotImplementedError("Subclases deben implementar este método")
+            
+class ExportadorCSV(Exportador):
+      def exportar(self,nombre_archivo,nombre_del_usuario,formato):
+                  print(f"Exportando datos a {self.nombre_archivo} en formato {self.formato} para el usuario {self.nombre_del_usuario}")
+      
+class ExportadorJSON(Exportador):
+      def exportar(self,nombre_archivo,nombre_del_usuario,formato):
+                  print(f"Exportando datos a {self.nombre_archivo} en formato {self.formato} para el usuario {self.nombre_del_usuario}")
+            
+ 
+nombre_archivo1 = input("Ingrese el nombre del archivo CSV: ")
+formato1 = input("Ingrese el formato de exportación (CSV/JSON): ")
+nombre_del_usuario1 = input("Ingrese su nombre de usuario: ")
+if formato1.lower() == "csv":
+      exportador_csv = ExportadorCSV(nombre_archivo1, nombre_del_usuario1, formato1)
+      exportador_csv.exportar(nombre_archivo1, nombre_del_usuario1, formato1)
+elif formato1.lower() == "json":
+      exportador_json = ExportadorJSON(nombre_archivo1, nombre_del_usuario1, formato1)
+      exportador_json.exportar(nombre_archivo1, nombre_del_usuario1, formato1)
+else:
+      print("Formato no soportado. Por favor, elija CSV o JSON.")
+
 print("----------FIN----------")
 
 print("----------EJERCICIOS DIFICIL----------")
@@ -259,15 +289,122 @@ print("----------EJERCICIOS DIFICIL----------")
 print("Ejercicio 7: [DIP + OCP] Crea una clase RecommendationEngine que dependa de una abstracción RecommendationStrategy" 
       "(por historial, por popularidad, etc). Debe poder agregar nuevas estrategias sin modificar la clase principal.")
          
+class RecomendationStrategy:
+      def recomendar(self,user):
+            raise NotImplementedError("Subclases deben implementar este método")
+
+class HistorialRecomendation(RecomendationStrategy):
+      def recomendar(self, user):
+            # Simulación de recomendación por historial
+            return f"Recomendaciones basadas en el historial de {user}"
+         
+class PopularidadRecomendation(RecomendationStrategy):
+      def recomendar(self, user):
+            # Simulación de recomendación por popularidad
+            return f"Recomendaciones basadas en la popularidad para {user}"
+
+class RecommendationEngine:
+      def __init__(self, strategy: RecomendationStrategy):
+            self.strategy = strategy
+      
+      def recomendar(self, user):
+            return self.strategy.recomendar(user)
+
+usuario = input("Ingrese su nombre de usuario: ")
+historial_strategy = HistorialRecomendation()
+recomendation_engine_historial = RecommendationEngine(historial_strategy)
+resultado_historial = recomendation_engine_historial.recomendar(usuario)
+print(resultado_historial)
+print("")
+popularidad_strategy = PopularidadRecomendation()
+recomendation_engine_popularidad = RecommendationEngine(popularidad_strategy)
+resultado_popularidad = recomendation_engine_popularidad.recomendar(usuario)
+print(resultado_popularidad)
+     
 print("----------FIN----------")
 
-print("Ejercicio 8: [SRP + LSP + OCP] Diseña una clase base MetodoPago con subclases TarjetaCredito, PayPal, Cripto. El sistema debe aceptar nuevas" 
-      "sin modificarse. Cada clase debe tener su lógica separada y sustituible.")
+print("Ejercicio 8: [SRP + LSP + OCP] Diseña una clase base MetodoPago con subclases TarjetaCredito, PayPal, Cripto. El sistema" 
+      "debe aceptar nuevas sin modificarse. Cada clase debe tener su lógica separada y sustituible.")
+
+class MetodoPago:
+      def procesar_pago(self, monto):
+            raise NotImplementedError("Subclases deben implementar este método")
+
+class TarjetaCredito(MetodoPago):
+      def procesar_pago(self, monto):
+            print(f"Procesando pago de {monto} con Tarjeta de Crédito.")
+            
+class PayPal(MetodoPago):
+      def procesar_pago(self, monto):
+            print(f"Procesando pago de {monto} con PayPal.")
+
+class Cripto(MetodoPago):
+      def procesar_pago(self, monto):
+            print(f"Procesando pago de {monto} con Criptomonedas.")
+
+monto_pago = float(input("Ingrese el monto a pagar: "))
+metodo_pago = input("Ingrese el método de pago (TarjetaCredito/PayPal/Cripto): ")   
+if metodo_pago.lower() == "tarjetacredito":
+      pago = TarjetaCredito()
+      pago.procesar_pago(monto_pago)
+elif metodo_pago.lower() == "paypal":
+      pago = PayPal()
+      pago.procesar_pago(monto_pago)
+elif metodo_pago.lower() == "cripto":
+      pago = Cripto()
+      pago.procesar_pago(monto_pago)
+else:
+      print("Método de pago no soportado. Por favor, elija TarjetaCredito, PayPal o Cripto.")
 
 print("----------FIN----------")
 
 print("Ejercicio 9: [ISP + DIP] Define interfaces como TemperaturaSensor, HumedadSensor, MovimientoSensor. Crea una clase MonitorIoT que" 
       "use estos sensores sin conocer su implementación.")
+
+class TemperaturaSensor:
+      def obtener_temperatura(self):
+            raise NotImplementedError("Subclases deben implementar este método")
+
+class HumedadSensor:
+      def obtener_humedad(self):
+            raise NotImplementedError("Subclases deben implementar este método")
+
+class MovimientoSensor:
+      def detectar_movimiento(self):
+            raise NotImplementedError("Subclases deben implementar este método")
+
+class SensorTemperatura(TemperaturaSensor):
+      def obtener_temperatura(self):
+            return 25.0  # Simulación de temperatura
+
+class SensorHumedad(HumedadSensor):
+      def obtener_humedad(self):
+            return 60.0  # Simulación de humedad
+
+class SensorMovimiento(MovimientoSensor):
+      def detectar_movimiento(self):
+            return True  # Simulación de detección de movimiento
+
+class MonitorIoT:
+      def __init__(self, temperatura_sensor: TemperaturaSensor, humedad_sensor: HumedadSensor, movimiento_sensor: MovimientoSensor):
+            self.temperatura_sensor = temperatura_sensor
+            self.humedad_sensor = humedad_sensor
+            self.movimiento_sensor = movimiento_sensor
+      
+      def mostrar_datos(self):
+            temperatura = self.temperatura_sensor.obtener_temperatura()
+            humedad = self.humedad_sensor.obtener_humedad()
+            movimiento = self.movimiento_sensor.detectar_movimiento()
+            
+            print(f"Temperatura: {temperatura}°C")
+            print(f"Humedad: {humedad}%")
+            print(f"Movimiento detectado: {'Sí' if movimiento else 'No'}")
+      
+sensor_temperatura = SensorTemperatura()
+sensor_humedad = SensorHumedad()
+sensor_movimiento = SensorMovimiento()
+monitor = MonitorIoT(sensor_temperatura, sensor_humedad, sensor_movimiento)
+monitor.mostrar_datos()
 
 print("----------FIN----------")
 
