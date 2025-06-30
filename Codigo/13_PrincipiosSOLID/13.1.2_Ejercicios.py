@@ -415,10 +415,110 @@ print("Ejercicio 10: [TODOS LOS PRINCIPIOS] Crea un sistema con:"
 "Notificaciones (Email, SMS) intercambiables (LSP)"
 "Interfaces segregadas para funcionalidades separadas (ISP)")
 
+from abc import ABC, abstractmethod
+
+# === SRP: Curso y Estudiante ===
+class Curso:
+    def __init__(self, nombre, descripcion):
+        self.nombre = nombre
+        self.descripcion = descripcion
+
+class Estudiante:
+    def __init__(self, nombre, email):
+        self.nombre = nombre
+        self.email = email
+
+# === DIP: RepositorioCurso con abstracción ===
+class RepositorioCurso(ABC):
+    @abstractmethod
+    def guardar(self, curso: Curso):
+        pass
+
+class RepositorioCursoMemoria(RepositorioCurso):
+    def __init__(self):
+        self.cursos = []
+
+    def guardar(self, curso: Curso):
+        self.cursos.append(curso)
+        print(f"[RepositorioMemoria] Curso '{curso.nombre}' guardado en memoria.")
+
+class RepositorioCursoArchivo(RepositorioCurso):
+    def guardar(self, curso: Curso):
+        print(f"[RepositorioArchivo] Guardando curso '{curso.nombre}' en archivo...")
+
+# === OCP: Exportador extensible ===
+class ExportadorCurso(ABC):
+    @abstractmethod
+    def exportar(self, curso: Curso):
+        pass
+
+class ExportadorCSV(ExportadorCurso):
+    def exportar(self, curso: Curso):
+        print(f"[ExportadorCSV] Exportando: {curso.nombre};{curso.descripcion}")
+
+class ExportadorJSON(ExportadorCurso):
+    def exportar(self, curso: Curso):
+        print(f"[ExportadorJSON] Exportando: {{'nombre': '{curso.nombre}', 'descripcion': '{curso.descripcion}'}}")
+
+# === LSP: Notificadores intercambiables ===
+class Notificador(ABC):
+    @abstractmethod
+    def notificar(self, estudiante: Estudiante, mensaje: str):
+        pass
+
+class NotificadorEmail(Notificador):
+    def notificar(self, estudiante: Estudiante, mensaje: str):
+        print(f"[Email] Enviando a {estudiante.email}: {mensaje}")
+
+class NotificadorSMS(Notificador):
+    def notificar(self, estudiante: Estudiante, mensaje: str):
+        print(f"[SMS] Enviando a {estudiante.nombre}: {mensaje}")
+
+# === ISP: Interfaces separadas para distintas funciones ===
+class RegistradorCurso(ABC):
+    @abstractmethod
+    def registrar(self, curso: Curso):
+        pass
+
+class Exportable(ABC):
+    @abstractmethod
+    def exportar(self, curso: Curso):
+        pass
+
+class Notificable(ABC):
+    @abstractmethod
+    def notificar_inscripcion(self, estudiante: Estudiante, curso: Curso):
+        pass
+
+# === Clase de aplicación que une todo (DIP + ISP) ===
+class GestorCursos(RegistradorCurso, Exportable, Notificable):
+    def __init__(self, repositorio: RepositorioCurso, exportador: ExportadorCurso, notificador: Notificador):
+        self.repositorio = repositorio
+        self.exportador = exportador
+        self.notificador = notificador
+
+    def registrar(self, curso: Curso):
+        self.repositorio.guardar(curso)
+
+    def exportar(self, curso: Curso):
+        self.exportador.exportar(curso)
+
+    def notificar_inscripcion(self, estudiante: Estudiante, curso: Curso):
+        mensaje = f"¡Hola {estudiante.nombre}, te has inscrito en el curso '{curso.nombre}'!"
+        self.notificador.notificar(estudiante, mensaje)
+
+# === Uso del sistema ===
+curso = Curso("Python SOLID", "Aprende principios de diseño con Python")
+estudiante = Estudiante("Ana", "ana@example.com")
+
+repositorio = RepositorioCursoMemoria()
+exportador = ExportadorJSON()
+notificador = NotificadorEmail()
+
+gestor = GestorCursos(repositorio, exportador, notificador)
+
+gestor.registrar(curso)                      # SRP + DIP
+gestor.exportar(curso)                       # OCP
+gestor.notificar_inscripcion(estudiante, curso)  # LSP + ISP
+
 print("----------FIN----------")
-
-print("----------EJERCICIO FINAL----------")
-print("CHAT ANALIZADOR DE SENTIMIENTOS")
-print("En este proyecto desarrolla un chatbot en python, que nos pida que le digamos algo y tome eso que le decimos, analice el sentimiento"
-      " y nos responde cual es el sentimiento que ha detectado.")
-
